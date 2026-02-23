@@ -8,7 +8,8 @@
     "dev": "grafana-toolkit plugin:dev",
     "harness": "vite --config vite.harness.config.ts",
     "test": "grafana-toolkit plugin:test",
-    "lint": "grafana-toolkit plugin:lint"
+    "lint": "grafana-toolkit plugin:lint",
+    "sign": "npx --yes @grafana/sign-plugin@latest"
   },
   "dependencies": {
     "@grafana/data": "^9.5.21",
