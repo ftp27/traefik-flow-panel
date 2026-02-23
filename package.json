@@ -1,6 +1,6 @@
 {
   "name": "ftp27-traefikflow-panel",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Grafana panel plugin to visualize Traefik flow",
   "homepage": "https://github.com/ftp27/ftp27-traefikflow-panel#readme",
   "scripts": {
