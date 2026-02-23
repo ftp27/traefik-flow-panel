@@ -19,11 +19,6 @@ export const plugin = new PanelPlugin<TraefikFlowOptions>(TraefikFlowPanel).setP
       name: 'Code label',
       defaultValue: 'code',
     })
-    .addTextInput({
-      path: 'traefikLogoUrl',
-      name: 'Traefik logo URL',
-      defaultValue: 'public/plugins/traefik-flow-panel/img/traefik.png',
-    })
     .addSelect({
       path: 'palette',
       name: 'Ribbon palette',

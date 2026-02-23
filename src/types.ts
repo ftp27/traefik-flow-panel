@@ -2,7 +2,6 @@ export interface TraefikFlowOptions {
   routerLabel?: string;
   serviceLabel?: string;
   codeLabel?: string;
-  traefikLogoUrl?: string;
   palette?: string;
   hideZeroNodes?: boolean;
 }

@@ -386,9 +386,6 @@ const NodeGlyph = ({
   const clientHeight = barTotal > 0 ? (node.buckets.client / barTotal) * barHeight : 0;
   const serverHeight = barTotal > 0 ? (node.buckets.server / barTotal) * barHeight : 0;
   const labelPaddingX = 6;
-  const labelHeight = barHeight;
-  const labelWidth = Math.max(estimateTextWidth(node.label), estimateTextWidth(countText)) + labelPaddingX * 2;
-  const labelY = node.y - labelHeight / 2;
 
   return (
     <g>
@@ -410,18 +407,7 @@ const NodeGlyph = ({
               strokeLinecap="round"
             />
           ))}
-          {logoUrl ? (
-            <image
-              href={logoUrl}
-              x={node.x - node.radius * 0.5}
-              y={node.y - node.radius * 0.5}
-              width={node.radius}
-              height={node.radius}
-              preserveAspectRatio="xMidYMid meet"
-            />
-          ) : (
-            <TraefikLogo x={node.x} y={node.y} size={node.radius * 2.3} />
-          )}
+          <TraefikLogo x={node.x} y={node.y} size={node.radius * 2.3} />
         </>
       )}
       {node.kind !== 'traefik' && (
@@ -664,7 +650,6 @@ export const TraefikFlowPanel: React.FC<PanelProps<TraefikFlowOptions>> = (props
     });
     return map;
   }, [edges]);
-  const logoUrl = props.options.traefikLogoUrl ?? '';
   const textColor = theme.colors?.text?.primary ?? CONFIG.colors.text;
   const textMuted = theme.colors?.text?.secondary ?? textColor;
 
@@ -676,7 +661,7 @@ export const TraefikFlowPanel: React.FC<PanelProps<TraefikFlowOptions>> = (props
     <svg width={width} height={height}>
       <FlowLines edges={edges} metrics={metrics} />
       {nodes.map((node) => (
-        <NodeGlyph key={node.id} node={node} logoUrl={logoUrl} textColor={textColor} textMuted={textMuted} />
+        <NodeGlyph key={node.id} node={node} textColor={textColor} textMuted={textMuted} />
       ))}
     </svg>
   );
