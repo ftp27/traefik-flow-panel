@@ -2,7 +2,7 @@
 
 Custom Grafana panel for visualizing Traefik router → Traefik → service flow as a Sankey-style diagram.
 
-![Demo](https://github.com/ftp27/ftp27-traefik-flow-panel/blob/main/static/demo.gif)
+![Demo](https://github.com/ftp27/ftp27-traefikflow-panel/blob/main/static/demo.gif)
 
 ## Options
 - `Router label`: label name for router (`router`)

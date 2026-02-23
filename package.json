@@ -1,8 +1,8 @@
 {
-  "name": "ftp27-traefik-flow-panel",
+  "name": "ftp27-traefikflow-panel",
   "version": "0.1.10",
   "description": "Grafana panel plugin to visualize Traefik flow",
-  "homepage": "https://github.com/ftp27/ftp27-traefik-flow-panel#readme",
+  "homepage": "https://github.com/ftp27/ftp27-traefikflow-panel#readme",
   "scripts": {
     "build": "webpack -c ./.config/webpack/webpack.config.ts --env production",
     "dev": "webpack -w -c ./.config/webpack/webpack.config.ts --env development",
