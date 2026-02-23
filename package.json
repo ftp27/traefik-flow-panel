@@ -1,6 +1,6 @@
 {
   "name": "traefik-flow-panel",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Grafana panel plugin to visualize Traefik flow",
   "homepage": "https://github.com/ftp27/traefik-flow-panel#readme",
   "scripts": {
