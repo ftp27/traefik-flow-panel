@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="235px" height="235px" viewBox="0 0 235 235" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon</title>
+    <defs>
+        <linearGradient x1="1.69572586%" y1="100%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FAE620" offset="0%"></stop>
+            <stop stop-color="#FF9830" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="1.69572586%" y1="100%" x2="100%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#18233E" offset="0%"></stop>
+            <stop stop-color="#3E5D9B" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="99.2679196%" id="linearGradient-3">
+            <stop stop-color="#3E5D9B" offset="0%"></stop>
+            <stop stop-color="#3E5D9B" offset="35.2245411%"></stop>
+            <stop stop-color="#18233E" offset="64.8410184%"></stop>
+            <stop stop-color="#18233E" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M11,206 C27.2086236,206 45.7519693,199.625689 66.6300371,186.877068 C97.9471389,167.754137 133.935062,91.8598959 160.257916,65.9705495 C177.806486,48.7109852 197.053847,39.3874687 218,38" id="small" stroke="url(#linearGradient-1)" stroke-width="15.9157895" stroke-linecap="square" transform="translate(114.500000, 122.000000) scale(-1, -1) translate(-114.500000, -122.000000) "></path>
+        <path d="M37,186 C49.5284047,186 63.8614255,181.029555 79.9990625,171.088666 C104.205518,156.177333 132.02227,96.997895 152.368437,76.8103689 C165.932549,63.3520182 180.809737,56.0818952 197,55" id="big" stroke="url(#linearGradient-2)" stroke-width="56.8421053" stroke-linecap="square" transform="translate(117.000000, 120.500000) scale(-1, 1) translate(-117.000000, -120.500000) "></path>
+        <rect id="right" fill="url(#linearGradient-3)" x="218" y="0" width="17" height="235"></rect>
+        <rect id="left" fill="url(#linearGradient-3)" x="0" y="0" width="17" height="235"></rect>
+    </g>
+</svg>

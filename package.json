@@ -1,0 +1,31 @@
+{
+  "name": "traefik-flow-panel",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Grafana panel plugin to visualize Traefik flow",
+  "scripts": {
+    "build": "grafana-toolkit plugin:build",
+    "dev": "grafana-toolkit plugin:dev",
+    "harness": "vite --config vite.harness.config.ts",
+    "test": "grafana-toolkit plugin:test",
+    "lint": "grafana-toolkit plugin:lint"
+  },
+  "dependencies": {
+    "@grafana/data": "^9.5.21",
+    "@grafana/runtime": "^9.5.21",
+    "@grafana/ui": "^9.5.21",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@grafana/toolkit": "^9.5.21",
+    "@types/react": "^17.0.67",
+    "@types/react-dom": "^17.0.24",
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.1.4",
+    "typescript": "^5.2.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

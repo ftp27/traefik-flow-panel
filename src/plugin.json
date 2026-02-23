@@ -1,0 +1,22 @@
+{
+  "type": "panel",
+  "name": "Traefik Flow",
+  "id": "traefik-flow-panel",
+  "info": {
+    "description": "Visualize Traefik router->service flow",
+    "author": {
+      "name": "Aleksei Cherepanov"
+    },
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "keywords": ["traefik", "flow", "router", "service"],
+    "version": "0.1.4",
+    "updated": "2026-02-23"
+  },
+  "dependencies": {
+    "grafanaVersion": ">=10.4.0",
+    "plugins": []
+  }
+}
