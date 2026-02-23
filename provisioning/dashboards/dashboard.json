@@ -51,7 +51,7 @@
         }
       ],
       "title": "Sample Panel Title",
-      "type": "traefik-flow-panel"
+      "type": "ftp27-traefik-flow-panel"
     },
     {
       "datasource": {
@@ -82,7 +82,7 @@
         }
       ],
       "title": "Sample Panel Title",
-      "type": "traefik-flow-panel"
+      "type": "ftp27-traefik-flow-panel"
     }
   ],
   "refresh": "",
@@ -97,7 +97,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Provisioned traefik-flow-panel dashboard",
+  "title": "Provisioned ftp27-traefik-flow-panel dashboard",
   "uid": "a538aeff-5a8a-42a5-901c-938d896fdd6f",
   "version": 1,
   "weekStart": ""
