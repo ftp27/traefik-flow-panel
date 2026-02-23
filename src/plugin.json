@@ -12,7 +12,7 @@
       "large": "img/logo.svg"
     },
     "keywords": ["traefik", "flow", "router", "service"],
-    "version": "0.1.4",
+    "version": "0.1.5",
     "updated": "2026-02-23"
   },
   "dependencies": {

@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { FieldType, PanelProps, GrafanaTheme2 } from '@grafana/data';
-import { useTheme2 } from '@grafana/ui';
+import { useStyles2, useTheme2 } from '@grafana/ui';
+import { css } from '@emotion/css';
 import { TraefikFlowOptions, FlowNode, FlowEdge, StatusBuckets } from './types';
 import { TraefikLogo } from './TraefikLogo';
 
@@ -360,16 +361,17 @@ const buildFlow = (
   return { nodes, edges };
 };
 
+type NodeGlyphStyles = {
+  labelText: string;
+  countText: string;
+};
+
 const NodeGlyph = ({
   node,
-  logoUrl,
-  textColor,
-  textMuted,
+  styles,
 }: {
   node: FlowNode;
-  logoUrl?: string;
-  textColor: string;
-  textMuted: string;
+  styles: NodeGlyphStyles;
 }) => {
   const labelFont = 11;
   const countFont = 10;
@@ -431,8 +433,7 @@ const NodeGlyph = ({
             y={node.y - 2}
             textAnchor="end"
             fontSize={labelFont}
-            fontFamily="'Space Grotesk', 'Arial Black', sans-serif"
-            fill={textColor}
+            className={styles.labelText}
           >
             {node.label}
           </text>
@@ -441,8 +442,7 @@ const NodeGlyph = ({
             y={node.y + 12}
             textAnchor="end"
             fontSize={countFont}
-            fontFamily="'Space Grotesk', 'Arial Black', sans-serif"
-            fill={textMuted}
+            className={styles.countText}
           >
             {countText}
           </text>
@@ -455,8 +455,7 @@ const NodeGlyph = ({
             y={node.y - 2}
             textAnchor="start"
             fontSize={labelFont}
-            fontFamily="'Space Grotesk', 'Arial Black', sans-serif"
-            fill={textColor}
+            className={styles.labelText}
           >
             {node.label}
           </text>
@@ -465,8 +464,7 @@ const NodeGlyph = ({
             y={node.y + 12}
             textAnchor="start"
             fontSize={countFont}
-            fontFamily="'Space Grotesk', 'Arial Black', sans-serif"
-            fill={textMuted}
+            className={styles.countText}
           >
             {countText}
           </text>
@@ -650,18 +648,34 @@ export const TraefikFlowPanel: React.FC<PanelProps<TraefikFlowOptions>> = (props
     });
     return map;
   }, [edges]);
-  const textColor = theme.colors?.text?.primary ?? CONFIG.colors.text;
-  const textMuted = theme.colors?.text?.secondary ?? textColor;
+  const styles = useStyles2((currentTheme) => {
+    const textPrimary = currentTheme.colors?.text?.primary ?? CONFIG.colors.text;
+    const textMuted = currentTheme.colors?.text?.secondary ?? textPrimary;
+    return {
+      labelText: css({
+        fill: textPrimary,
+        fontFamily: currentTheme.typography.fontFamily,
+      }),
+      countText: css({
+        fill: textMuted,
+        fontFamily: currentTheme.typography.fontFamily,
+      }),
+      tooSmall: css({
+        padding: currentTheme.spacing(2),
+        color: textPrimary,
+      }),
+    };
+  });
 
   if (width < 200 || height < 120) {
-    return <div style={{ padding: 16, color: textColor }}>Panel is too small.</div>;
+    return <div className={styles.tooSmall}>Panel is too small.</div>;
   }
   
   return (
     <svg width={width} height={height}>
       <FlowLines edges={edges} metrics={metrics} />
       {nodes.map((node) => (
-        <NodeGlyph key={node.id} node={node} textColor={textColor} textMuted={textMuted} />
+        <NodeGlyph key={node.id} node={node} styles={styles} />
       ))}
     </svg>
   );

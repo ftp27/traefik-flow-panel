@@ -9,6 +9,36 @@ Custom Grafana panel for visualizing Traefik router → Traefik → service flow
 - npm
 - Grafana 9.5+ (Grafana 9 compatible build)
 
+## Options
+- `Router label`: label name for router (`router`)
+- `Service label`: label name for service (`service`)
+- `Code label`: label name for status code (`code`)
+- `Traefik logo URL`: optional image URL for center logo (leave empty to use inline SVG)
+
+## Data Expectations
+- Metric: `traefik_router_requests_total`
+- Labels: `router`, `service`, `code`
+
+## Data Frame Schema
+This panel expects time series data that Grafana converts into data frames with:
+- **Fields**: at least one `number` field containing request counts.
+- **Labels** (per field):
+  - `router` (string, required)
+  - `service` (string, required)
+  - `code` (string, required; HTTP status code)
+
+**Notes**
+- Each unique `(router, service, code)` label set is aggregated into router/service totals.
+- Status codes are bucketed into:
+  - `200–399` (OK)
+  - `400–499` (Client error)
+  - `500–599` (Server error)
+
+## Example Query
+```promql
+rate(traefik_router_requests_total[1h])
+```
+
 ## Install & Run (Local Grafana)
 1. Install deps:
    ```bash
@@ -44,18 +74,3 @@ This runs `grafana-toolkit` dev server. Point Grafana to the generated plugin ou
 npm run harness
 ```
 Opens a local Vite dev server with mocked data.
-
-## Options
-- `Router label`: label name for router (`router`)
-- `Service label`: label name for service (`service`)
-- `Code label`: label name for status code (`code`)
-- `Traefik logo URL`: optional image URL for center logo (leave empty to use inline SVG)
-
-## Data Expectations
-- Metric: `traefik_router_requests_total`
-- Labels: `router`, `service`, `code`
-
-## Example Query
-```promql
-rate(traefik_router_requests_total[1h])
-```
