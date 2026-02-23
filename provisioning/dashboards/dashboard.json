@@ -1,0 +1,104 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "grafana-testdata-datasource",
+        "uid": "trlxrdZVk"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "seriesCountSize": "sm",
+        "showSeriesCount": false,
+        "text": "Default value of text input option"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "db84e60d-b92a-4089-82cb-34842fb1754b"
+          },
+          "refId": "A",
+          "scenarioId": "raw_frame",
+          "rawFrameContent": "[\n  {\n    \"name\": \"traefik_router_requests_total\",\n    \"fields\": [\n      {\n        \"name\": \"value\",\n        \"type\": \"number\",\n        \"labels\": {\n          \"router\": \"api-gateway\",\n          \"service\": \"users-service\",\n          \"code\": \"200\"\n        },\n        \"values\": [12400]\n      }\n    ]\n  },\n  {\n    \"name\": \"traefik_router_requests_total\",\n    \"fields\": [\n      {\n        \"name\": \"value\",\n        \"type\": \"number\",\n        \"labels\": {\n          \"router\": \"api-gateway\",\n          \"service\": \"users-service\",\n          \"code\": \"500\"\n        },\n        \"values\": [120]\n      }\n    ]\n  },\n  {\n    \"name\": \"traefik_router_requests_total\",\n    \"fields\": [\n      {\n        \"name\": \"value\",\n        \"type\": \"number\",\n        \"labels\": {\n          \"router\": \"edge-router\",\n          \"service\": \"billing-service\",\n          \"code\": \"200\"\n        },\n        \"values\": [2100]\n      }\n    ]\n  },\n  {\n    \"name\": \"traefik_router_requests_total\",\n    \"fields\": [\n      {\n        \"name\": \"value\",\n        \"type\": \"number\",\n        \"labels\": {\n          \"router\": \"edge-router\",\n          \"service\": \"billing-service\",\n          \"code\": \"500\"\n        },\n        \"values\": [60]\n      }\n    ]\n  },\n  {\n    \"name\": \"traefik_router_requests_total\",\n    \"fields\": [\n      {\n        \"name\": \"value\",\n        \"type\": \"number\",\n        \"labels\": {\n          \"router\": \"public-router\",\n          \"service\": \"orders-service\",\n          \"code\": \"200\"\n        },\n        \"values\": [900]\n      }\n    ]\n  },\n  {\n    \"name\": \"traefik_router_requests_total\",\n    \"fields\": [\n      {\n        \"name\": \"value\",\n        \"type\": \"number\",\n        \"labels\": {\n          \"router\": \"public-router\",\n          \"service\": \"orders-service\",\n          \"code\": \"404\"\n        },\n        \"values\": [110]\n      }\n    ]\n  },\n  {\n    \"name\": \"traefik_router_requests_total\",\n    \"fields\": [\n      {\n        \"name\": \"value\",\n        \"type\": \"number\",\n        \"labels\": {\n          \"router\": \"zero-router\",\n          \"service\": \"zero-service\",\n          \"code\": \"200\"\n        },\n        \"values\": [0]\n      }\n    ]\n  }\n]"
+        }
+      ],
+      "title": "Sample Panel Title",
+      "type": "traefik-flow-panel"
+    },
+    {
+      "datasource": {
+        "type": "grafana-testdata-datasource",
+        "uid": "trlxrdZVk"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "seriesCountSize": "sm",
+        "showSeriesCount": false,
+        "text": "Default value of text input option"
+      },
+      "targets": [
+        {
+          "alias": "",
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "db84e60d-b92a-4089-82cb-34842fb1754b"
+          },
+          "refId": "A",
+          "scenarioId": "no_data_points"
+        }
+      ],
+      "title": "Sample Panel Title",
+      "type": "traefik-flow-panel"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Provisioned traefik-flow-panel dashboard",
+  "uid": "a538aeff-5a8a-42a5-901c-938d896fdd6f",
+  "version": 1,
+  "weekStart": ""
+}

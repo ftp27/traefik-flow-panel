@@ -1,5 +1,5 @@
 import { PanelPlugin } from '@grafana/data';
-import { TraefikFlowPanel } from './Panel';
+import { TraefikFlowPanel } from 'components/Panel';
 import { TraefikFlowOptions } from './types';
 
 export const plugin = new PanelPlugin<TraefikFlowOptions>(TraefikFlowPanel).setPanelOptions((builder) => {

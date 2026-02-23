@@ -2,8 +2,9 @@ import React, { useMemo } from 'react';
 import { FieldType, PanelProps, GrafanaTheme2 } from '@grafana/data';
 import { useStyles2, useTheme2 } from '@grafana/ui';
 import { css } from '@emotion/css';
-import { TraefikFlowOptions, FlowNode, FlowEdge, StatusBuckets } from './types';
+import { TraefikFlowOptions, FlowNode, FlowEdge, StatusBuckets } from '../types';
 import { TraefikLogo } from './TraefikLogo';
+import { bucketForCode, sumFieldValues, emptyBuckets } from './flowUtils';
 
 const CONFIG = {
   defaults: {
@@ -48,33 +49,6 @@ const scalePower = (value: number, min: number, max: number, outMin: number, out
 };
 
 const estimateTextWidth = (text: string, charWidth = 6.6) => text.length * charWidth;
-
-const emptyBuckets = (): StatusBuckets => ({ ok: 0, client: 0, server: 0 });
-
-const bucketForCode = (codeValue: string | number | undefined): keyof StatusBuckets => {
-  const code = typeof codeValue === 'number' ? codeValue : Number.parseInt(codeValue ?? '', 10);
-  if (Number.isFinite(code) && code >= 200 && code <= 399) {
-    return 'ok';
-  }
-  if (Number.isFinite(code) && code >= 400 && code <= 499) {
-    return 'client';
-  }
-  return 'server';
-};
-
-const sumFieldValues = (values: any): number => {
-  if (!values || typeof values.length !== 'number') {
-    return 0;
-  }
-  let total = 0;
-  for (let i = 0; i < values.length; i += 1) {
-    const v = values.get ? values.get(i) : values[i];
-    if (typeof v === 'number' && Number.isFinite(v)) {
-      total += v;
-    }
-  }
-  return total;
-};
 
 const buildNode = (cx: number, cy: number, radius: number, thickness: number, buckets: StatusBuckets) => {
   const total = buckets.ok + buckets.client + buckets.server;
@@ -145,7 +119,7 @@ const formatCount = (value: number) => {
 const buildFlow = (
   props: PanelProps<TraefikFlowOptions>,
   theme: GrafanaTheme2
-): { nodes: FlowNode[]; edges: FlowEdge[] } => {
+): { nodes: FlowNode[]; edges: FlowEdge[]; hasData: boolean } => {
   const { data, width, height, options } = props;
   const routerLabel = options.routerLabel ?? CONFIG.defaults.routerLabel;
   const serviceLabel = options.serviceLabel ?? CONFIG.defaults.serviceLabel;
@@ -358,7 +332,8 @@ const buildFlow = (
     }
   }
 
-  return { nodes, edges };
+  const hasData = edges.length > 0;
+  return { nodes, edges, hasData };
 };
 
 type NodeGlyphStyles = {
@@ -637,7 +612,7 @@ const FlowLines = ({
 export const TraefikFlowPanel: React.FC<PanelProps<TraefikFlowOptions>> = (props) => {
   const { width, height } = props;
   const theme = useTheme2();
-  const { nodes, edges } = useMemo(() => buildFlow(props, theme), [props, theme]);
+  const { nodes, edges, hasData } = useMemo(() => buildFlow(props, theme), [props, theme]);
   const metrics = useMemo(() => {
     const totals = edges.map((edge) => edge.total);
     const minTotal = totals.length ? Math.min(...totals) : 0;
@@ -669,6 +644,10 @@ export const TraefikFlowPanel: React.FC<PanelProps<TraefikFlowOptions>> = (props
 
   if (width < 200 || height < 120) {
     return <div className={styles.tooSmall}>Panel is too small.</div>;
+  }
+
+  if (!hasData) {
+    return <div className={styles.tooSmall}>No data</div>;
   }
   
   return (

@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/main/docs/sources/developers/plugins/plugin.schema.json",
   "type": "panel",
   "name": "Traefik Flow",
   "id": "traefik-flow-panel",
@@ -12,11 +13,12 @@
       "large": "img/logo.svg"
     },
     "keywords": ["traefik", "flow", "router", "service"],
+    "screenshots": [],
     "version": "%VERSION%",
     "updated": "%TODAY%"
   },
   "dependencies": {
-    "grafanaVersion": ">=10.4.0",
+    "grafanaDependency": ">=12.3.2",
     "plugins": []
   }
 }
